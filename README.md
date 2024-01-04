@@ -43,8 +43,10 @@
   - Vector search
 
 - **Handson** [GitHub][4]
-  - Index
+  - Search
 
 [0]: https://github.com/MongoDBAtlas//LGUPlusHandson/tree/main/00.pre-work
 [1]: https://github.com/MongoDBAtlas//LGUPlusHandson/tree/main/01.CRUD%20and%20MQL
 [2]: https://github.com/MongoDBAtlas//LGUPlusHandson/tree/main/02.Index%20and%20tips
+[3]: https://github.com/MongoDBAtlas//LGUPlusHandson/tree/main/03.atlas-appservice
+[4]: https://github.com/MongoDBAtlas//LGUPlusHandson/tree/main/04.atlas-search
