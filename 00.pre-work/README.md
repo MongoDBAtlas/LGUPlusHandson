@@ -11,7 +11,7 @@ Atlas Training Home에 제출한 이메일로 로그인 합니다.
 
 https://www.atlas-labs.cloud
 
-<img src="/00.pre-work/images/images17.png" width="50%" height="50%">     
+<img src="/00.pre-work/images/images17.png" width="30%" height="30%">     
 
 로그인 후 준비된 Atlas 환경을 볼 수 있습니다. Atlas Cluster를 클릭 하면 준비된 계정으로 Atlas Console에 로그인 할 수 있습니다. 
 
@@ -25,7 +25,7 @@ https://www.atlas-labs.cloud
 
 Atlas Console의 Project에 대한 권한을 부여하는 invitation으로 Accept를 클릭 하면 준비된 Project에 접근 권한이 부여 됩니다.   
 
-<img src="/00.pre-work/images/images12.png" width="90%" height="90%">   
+<img src="/00.pre-work/images/images12.png" width="50%" height="50%">   
 
 상단의 Atlas에서 "RFC FIELD MARKETING1"을 클릭 하면 권한이 부여된 Project를 볼 수 있습니다. 이를 클릭 합니다.
 
