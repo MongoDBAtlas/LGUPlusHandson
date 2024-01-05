@@ -11,17 +11,17 @@ Atlas Training Home에 제출한 이메일로 로그인 합니다.
 
 https://www.atlas-labs.cloud
 
-<img src="/00.pre-work/images/images17.png" width="90%" height="90%">     
+<img src="/00.pre-work/images/images17.png" width="50%" height="50%">     
 
 로그인 후 준비된 Atlas 환경을 볼 수 있습니다. Atlas Cluster를 클릭 하면 준비된 계정으로 Atlas Console에 로그인 할 수 있습니다. 
 
 로그인 후 MFA 설정에 관련한 질문이 나오게 되며 편의상 이를 넘어갑니다. 
 
-<img src="/00.pre-work/images/images10.png" width="90%" height="90%">   
+<img src="/00.pre-work/images/images10.png" width="70%" height="70%">   
 
 로그인 완료 후 상단에 계정 정보를 클릭 하면 invitation이 온것을 확인 할 수 있습니다. 이를 클릭하여 줍니다.   
 
-<img src="/00.pre-work/images/images11.png" width="90%" height="90%">   
+<img src="/00.pre-work/images/images11.png" width="50%" height="50%">   
 
 Atlas Console의 Project에 대한 권한을 부여하는 invitation으로 Accept를 클릭 하면 준비된 Project에 접근 권한이 부여 됩니다.   
 
