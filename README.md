@@ -20,9 +20,9 @@
 - Break
 
 2. **Index & Tips**
-  - Index
-  - Cursor
-  - Explain (ESR & Tips)
+   - Index
+   - Cursor
+   - Explain (ESR & Tips)
 
 - **Handson** [GitHub][2]
   - Index
@@ -30,17 +30,17 @@
 - Break
 
 3. **App Service**
-  - Function & Trigger
-  - Data API & GraphQL
-  - Host
-  - Device Sync
+   - Function & Trigger
+   - Data API & GraphQL
+   - Host
+   - Device Sync
 
 - **Handson** [GitHub][3]
   - App service
 
 4. **Search**
-  - Search
-  - Vector search
+   - Search
+   - Vector search
 
 - **Handson** [GitHub][4]
   - Search
