@@ -87,3 +87,5 @@ Compass에 해당 Query 조건을 입력 하고 Explain을 클릭 합니다.
 <img src="/02.Index and tips/images/image42.png" width="70%" height="70%"> 
 
 결과를 확인해 보면 Index에서 Projection 항목을 가져올 수 있어 디스크에서 데이터를 읽어 들이는 Fetch 과정이 생략된 것을 볼 수 있습니다. 이로 인해 총 소요 시간이 매우 단출 된 것을 확인 할 수 있습니다.
+
+<img src="/02.Index and tips/images/image43.png" width="70%" height="70%"> 
