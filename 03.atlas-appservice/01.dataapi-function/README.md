@@ -69,16 +69,7 @@
 ![env](img-app/04.env.png)
 
 - 환경 설정 후 (eg. `Testing`)
-- `Save Draft` 클릭
-- `Understanding Save and Deploy` 모달에서 `Next` 클릭
-- `Got it` 클릭
-
-<br>
-
-![env-rev-deploy](img-app/05.env-rev-deploy.png)
-
-- `REVIEW DRAFT & DEPLOY` 클릭
-- `Deployment Draft` 모달에서 `Deploy` 클릭
+- `Save` 클릭
 
 <br>
 
@@ -132,15 +123,8 @@
 - `sameple_mflix.movies` collection 선택
 - 기본 `denyAllAccess`를 `readAll`로 변경 후
 - `Add preset role` 클릭
-
-<br>
-
-![rule-deploy](img-data/05.rule-deploy.png)
-
 - Rule이 `0.readAll` 로 변경 확인 후
-- 상단의 `REVIEW DRAFT & DEPLOY` 클릭 후
-- 활성화 된 `Deployment Draft` 모달에서 `Deploy` 클릭 후
-- 잠시 후 상단에서 `Deployment was successful` 확인
+
 
 # Data API
 
@@ -365,20 +349,7 @@
 
 - `Fetch Custom User Data`와
 - `Create User Upon Authentication`을 enable 시킨 후
-- `Save Draft` 클릭
-
-<br>
-
-- 상단 `REVIEW DRAFT & DEPLOY` 배너 버튼을 클릭 후
-
-<br>
-
-- `Deployment Draft` 모달에서 최종 검토를 하고
-- 모달 오른쪽 아래 `Deploy` 버튼 클릭
-
-<br>
-
-- 상단에 `Deployment was successful!` 배너가 나오면 성공
+- `Save` 클릭
 
 ## Query Custom Endpoint
 
@@ -421,7 +392,7 @@ DATA API가 모든 query에 대해 사용자를 지정하는 인증 `User Id` �
 
 ![userId select](img-cu/02.auth-uid-select.png)
 
-- App Service 좌측 내비게이션 바에서 `HTTPS Endpoints`를 선택 후
+- App Service 좌측 내비게이션 바에서 `HTTPS Endpoints`를 선택 후 Data API 탭을 선택
 - `Authentication Options`에서 `User Id`를 선택한다
 - 아래 `Select User` 클릭
 

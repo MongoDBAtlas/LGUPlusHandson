@@ -62,15 +62,8 @@ Atlas는 개발이 필요없이 설정을 통해 필요한 모든 데이터 구�
 
 ![save draft](img-setup/04.gen-schema.png)
 
-- schema 생성이 완료되면 우측 상단의 `Save Draft` 진행
+- schema 생성이 완료되면 우측 상단의 `Save` 진행
 
-![deploy](img-setup/05.gen-schema.png)
-
-- 저장 후 상단의 `REVIEW DRAFT & DEPLOY`를 클랙해 생성을 완료해야 한다
-- 이 후 모달 화면 하단의 `Deploy` 클릭 후
-- 아래 이미지처럼 상단에 `Deployment was successful!` 확인
-
-> > > > ![schema gen success](img-setup/06.gen-schema.png)
 
 ## 스키마 확인
 
