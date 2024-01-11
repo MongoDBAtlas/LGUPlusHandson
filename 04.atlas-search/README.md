@@ -8,7 +8,7 @@
 ### [&rarr; Search in Aggregate](#Aggregate)
 ### [&rarr; Vector Search](#Vector)
 
-실습은 Python Application을 이용하여 테스트 할 수 있으며 익숙하지 않은 경우 Aggregate를 이용하여 실습 할 수 있습니다. 
+실습은 Python Application을 이용하여 테스트 할 수 있으며 익숙하지 않은 경우 mongosh로 접속 하거나 Compass에서 Aggregate를 이용하여 실습 할 수 있습니다. 
 <br>
 
 ### Index
@@ -16,7 +16,7 @@ MongoDB Atlas Search를 이용하여 Data pipeline 구성 없이 Atlas에 저장
 
 #### full text index 생성
 Atlas console 에 로그인 후 데이터베이스 클러스터를 선택 후 Search를 클릭 합니다.   
-Free tier는 3개의 인덱스 까지 생성 가능 합니다.   
+M10이상은 인덱스 생성에 제한이 없으나 Free tier는 3개의 인덱스 까지 생성 가능 합니다.   
 <img src="/04.atlas-search/image/images01.png" width="70%" height="70%">    
 
 인덱스 생성은 Json 으로 직접 입력 하거나 UI를 통해 생성 할 수 있습니다. Visual Editor 를 선택 합니다.
@@ -50,6 +50,16 @@ Atlas Console 의 Aggregation 항목을 선택 하고 검색 관련한 pipeline 
       }
     }
 ]
+`````
+Aggregate에서 $search stage로 추가한 경우 $search를 입력할 필요가 없음으로 다음을 입력하여 줍니다
+`````
+ {
+        index: "default",
+        text: {
+          query: "crime",
+          path: "title",
+        }
+      }
 `````
 
 <img src="/04.atlas-search/image/images06.png" width="70%" height="70%">    
@@ -542,7 +552,7 @@ Atlas console에서 인덱스를 생성 하여 줍니다. 인덱스는 UI를 통
 <img src="/04.atlas-search/image/images41.png" width="70%" height="70%">
 
 
-검색을 위해서 openAI (https://openai.com/)에 무료 회원 가입 후 회원 정보 페이지에서 API 사용을 위한 API key를 생성 합니다.   
+검색을 위해서 openAI (https://openai.com/ )에 무료 회원 가입 후 회원 정보 페이지에서 API 사용을 위한 API key를 생성 합니다.   
 
 
 <img src="/04.atlas-search/image/images32.png" width="70%" height="70%">
@@ -589,17 +599,10 @@ curl --location 'https://api.openai.com/v1/embeddings' \
 }
 `````
 
-embedding 부분을 복사 하여 Query에 넣어주면 검색이 가능 합니다.
-다음은 Vector를 이용한 검색 Query입니다.   
+호출에 대한 결과는 vector.json에 저장 하고 있음으로 이를 사용 할 수 있습니다.   
 `````
-[primary] sample_mflix> let vector = [
-                -0.0028920018,
-                -0.027676977,
-                0.007235899,
-                ...
-                0.00018032902,
-                -0.026289087
-            ]
+[primary] sample_mflix> const vectorjson = require('./vector.json')
+[primary] sample_mflix> let vector = vectorjson.data[0].embedding
 
 [primary] sample_mflix> db.embedded_movies.aggregate([ { "$vectorSearch": { "index": "vector_index", "path": "plot_embedding", "queryVector": vector, "numCandidates": 200, "limit": 10 } }, { "$project": { "_id": 0, "title": 1, "genres": 1, "plot": 1, "released": 1, "score": { $meta: "vectorSearchScore" } } }] )
 [
@@ -678,4 +681,25 @@ embedding 부분을 복사 하여 Query에 넣어주면 검색이 가능 합니�
 `````
 
 OpenAI의 API 호출 시 원한는 값을 Input에 넣어 Vector 값을 구해서 결과 검색이 가능합니다.   
-OpenAI이 계정이 없는 경우 openAI.txt 파일에 전체 값을 넣었으니 활용하여 검색이 가능 합니다.  
+
+
+`````
+[primary] sample_mflix> let vector;
+
+[primary] sample_mflix> var myHeaders = new Headers();
+
+[primary] sample_mflix> myHeaders.append("Content-Type", "application/json");
+
+[primary] sample_mflix> myHeaders.append("Authorization", "Bearer sk-bPm*****");
+
+[primary] sample_mflix> var raw = JSON.stringify({ "input": "<<Text of what you want to do vector search>> ", "model": "text-embedding-ada-002" });
+
+[primary] sample_mflix> var requestOptions = { method: 'POST', headers: myHeaders, body: raw, redirect: 'follow' }; 
+
+[primary] sample_mflix> fetch("https://api.openai.com/v1/embeddings", requestOptions).then(response => response.text()).then(result => vector=result.data[0].embedding).catch(error => console.log('error', error));
+
+
+[primary] sample_mflix> db.embedded_movies.aggregate([ { "$vectorSearch": { "index": "vector_index", "path": "plot_embedding", "queryVector": vector, "numCandidates": 200, "limit": 10 } }, { "$project": { "_id": 0, "title": 1, "genres": 1, "plot": 1, "released": 1, "score": { $meta: "vectorSearchScore" } } }] )
+
+
+`````
