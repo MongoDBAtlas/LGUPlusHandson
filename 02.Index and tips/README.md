@@ -54,6 +54,36 @@ E-S-R 규칙에 맞추어 인덱스를 생성 하고 Explain에서 개선된 사
 
 <img src="/02.Index and tips/images/image04.png" width="90%" height="90%">     
 
-Projection 항목에 title만을 출력 하도록 하고 Plan을 확인 합니다.
+#### Covered Query
 
+다음 인덱스(type, year)를 생성 하고 Query에 대한 Explain을 확인 합니다.   
 
+<img src="/02.Index and tips/images/image40.png" width="40%" height="40%"> 
+
+인덱스 생성 이후 다음 내용을 Query를 작성하고 Explain을 확인 합니다.   
+
+````
+db.movies.find(
+	{"type" : "movie", "year" : {$gte:2000}}
+).explain("executionStats")
+````
+
+Comapss를 이용한 Explain은 다음과 같습니다.   
+
+<img src="/02.Index and tips/images/image41.png" width="70%" height="70%"> 
+
+12440건의 데이터를 검색하였으며 Fetch 시간이 16ms가 소요 된 것을 확인 할 수 있습니다.  
+
+Query를 변경하여 Projection을 추가 하여 주고 테스트를 진행 합니다. (type, year 만 출력 하도록 합니다.)   
+
+````
+db.movies.find(
+	{"type" : "movie", "year" : {$gte:2000}}, {type:1, year: 1, _id:0}
+).explain("executionStats")
+````
+
+Compass에 해당 Query 조건을 입력 하고 Explain을 클릭 합니다.   
+
+<img src="/02.Index and tips/images/image42.png" width="70%" height="70%"> 
+
+결과를 확인해 보면 Index에서 Projection 항목을 가져올 수 있어 디스크에서 데이터를 읽어 들이는 Fetch 과정이 생략된 것을 볼 수 있습니다. 이로 인해 총 소요 시간이 매우 단출 된 것을 확인 할 수 있습니다.
